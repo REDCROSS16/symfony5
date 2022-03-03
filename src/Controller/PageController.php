@@ -30,4 +30,34 @@ class PageController extends AbstractController
 
         return $name;
     }
+
+    // сумма их квадратных делителей сама по себе является квадратом
+    public function listSquared($m, $n): Response
+    {
+        // все целые делители между $m и $n
+        $devisors = [];
+
+//        1, 246, 2, 123, 3, 82, 6, 41
+
+        if ($m > $n)  {
+            $res = 'm больше n';
+        } else {
+            for ($i = $m; $i < $n; $i++)
+                if ($n % $i == 0 ) {
+                    $devisors[] = $i;
+                }
+            $quad = [];
+            foreach ($devisors as $devisor) {
+                $quad[] = $devisor ** 2;
+            }
+
+            foreach ($quad as $index => $value) {
+
+            }
+        }
+
+        return $this->render('page/listsquared.html.twig', [
+            'result' => $res
+        ]);
+    }
 }

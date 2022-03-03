@@ -6,3 +6,11 @@
 app_lucky_number:
   path: /lucky/number
   controller: App\Controller\LuckyController::number
+
+page:
+  path: /page
+  controller: App\Controller\PageController:index
+
+listSquared:
+  path: /lsitsquared/m={m}&n={n}
+  controller: App\Controller\PageController:listSquared
