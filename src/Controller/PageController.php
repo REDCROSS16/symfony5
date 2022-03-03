@@ -51,9 +51,14 @@ class PageController extends AbstractController
                 $quad[] = $devisor ** 2;
             }
 
-            foreach ($quad as $index => $value) {
-
+            for ($i = 0; $i < count($quad); $i++) {
+                $sum = $quad[$i];
+                for ($j = $i + 1; $j < count($quad); $j++) {
+                    $sum = $sum + $quad[$j];
+                    $res[] = [sqrt($sum), $sum];
+                }
             }
+            dd($res);
         }
 
         return $this->render('page/listsquared.html.twig', [
