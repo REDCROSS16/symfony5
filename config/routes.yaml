@@ -12,5 +12,5 @@ page:
   controller: App\Controller\PageController:index
 
 listSquared:
-  path: /lsitsquared/m={m}&n={n}
+  path: /lsitsquared/
   controller: App\Controller\PageController:listSquared

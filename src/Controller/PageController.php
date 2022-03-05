@@ -32,37 +32,56 @@ class PageController extends AbstractController
     }
 
     // сумма их квадратных делителей сама по себе является квадратом
-    public function listSquared($m, $n): Response
+#                Алгоритм:
+#                1.пройтись по всем целым числам
+#                2.найти их все делители
+#                3.делители возвести в квадрат
+#                4.сумма делителей
+#                5. если есть корень то подходит!!!
+    public function listSquared(): Response
     {
-        // все целые делители между $m и $n
-        $devisors = [];
-
+        $result = '';
+        $m = 1;
+        $n = 250;
 //        1, 246, 2, 123, 3, 82, 6, 41
 
         if ($m > $n)  {
             $res = 'm больше n';
         } else {
-            for ($i = $m; $i < $n; $i++)
-                if ($n % $i == 0 ) {
-                    $devisors[] = $i;
+            // например 42 или 246 где сумма квадратов делителей имеет целый корень
+            $divisors = [];
+            for ($num = $m; $num <= $n; $num++) {
+//                echo 'Делители числа ' . $num . ': ';
+                $divisors[$num] = [];
+                for ($i = 1; $i <= $num ; $i++) {
+                    if ($num % $i == 0) {
+                        // число $num
+                        $divisors[$num][] = $i;
+//                        echo $i . ' ';
+                    }
                 }
-            $quad = [];
-            foreach ($devisors as $devisor) {
-                $quad[] = $devisor ** 2;
+//                echo '<br>';
+
+                $quadDivisors[$num] = [];
+                foreach ( $divisors[$num] as $divisor) {
+                    $quadDivisors[$num][] = $divisor ** 2;
+                }
+                $quadDivisorsSum[$num] = array_sum($quadDivisors[$num]);
             }
 
-            for ($i = 0; $i < count($quad); $i++) {
-                $sum = $quad[$i];
-                for ($j = $i + 1; $j < count($quad); $j++) {
-                    $sum = $sum + $quad[$j];
-                    $res[] = [sqrt($sum), $sum];
+            foreach ($quadDivisorsSum as $num => $value) {
+                $sqrt = sqrt($value);
+                $mult = (int)$sqrt * (int)$sqrt;
+
+                if ($mult == $value) {
+                    $result .= 'число ' . $num . ' имеет красивый квадрат ' . $value . ' ';
                 }
             }
-            dd($res);
+
         }
 
         return $this->render('page/listsquared.html.twig', [
-            'result' => $res
+            'result' => $result,
         ]);
     }
 }
