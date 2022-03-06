@@ -77,11 +77,16 @@ class PageController extends AbstractController
                     $result .= 'число ' . $num . ' имеет красивый квадрат ' . $value . ' ';
                 }
             }
-
         }
 
         return $this->render('page/listsquared.html.twig', [
             'result' => $result,
         ]);
+    }
+
+
+    public function newPage()
+    {
+        
     }
 }
