@@ -85,8 +85,8 @@ class PageController extends AbstractController
     }
 
 
-    public function newPage()
+    public function feedbackAction()
     {
-        
+        die('works');
     }
 }
