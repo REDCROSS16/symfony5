@@ -84,9 +84,16 @@ class PageController extends AbstractController
         ]);
     }
 
-
+    /**
+     * @Route("/feedback", name="feedback")
+     */
     public function feedbackAction()
     {
-        die('works');
+
+       return $this->render('page/feedback.html.twig', [
+        'name' => 'Alexander',
+        'telephone' => '+375 33 382-20-11',
+        'email' => 'belkill@mail.ru'
+       ]);
     }
 }

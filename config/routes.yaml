@@ -15,6 +15,6 @@ listSquared:
   path: /lsitsquared/
   controller: App\Controller\PageController:listSquared
 
-feedback:
-  path: /feedback/
-  controller: App\Controller\PageController:feedbackAction
+#feedback:
+#  path: /feedback/
+#  controller: App\Controller\PageController:feedbackAction
