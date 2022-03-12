@@ -96,4 +96,35 @@ class PageController extends AbstractController
         'email' => 'belkill@mail.ru'
        ]);
     }
+
+    /**
+     * @Route("/romanian", name="romanian")
+     */
+    public function romanian()
+    {
+        $number = 2022;
+
+        $num = intval($number);
+        $result = '';
+
+        $romanian = [
+            'M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400,
+            'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40,
+            'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1
+        ];
+
+        foreach ($romanian as $roman => $value)
+        {
+            // совпадения
+            $matches = intval($num / $value);
+            $result .= str_repeat($roman, $matches);
+            // остатки, проверяем дальше
+            $num = $num % $value;
+        }
+
+        return $this->render('page/romanian.html.twig',
+        [
+            'result' => $result,
+        ]);
+    }
 }
