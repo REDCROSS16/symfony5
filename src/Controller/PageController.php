@@ -126,4 +126,9 @@ class PageController extends AbstractController
             'result' => $result,
         ]);
     }
+
+    public function someFunction()
+    {
+        
+    }
 }
