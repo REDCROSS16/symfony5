@@ -127,8 +127,11 @@ class PageController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/test", name="test")
+     */
     public function someFunction()
     {
-        
+        return $this->render('page/test.html.twig');
     }
 }
