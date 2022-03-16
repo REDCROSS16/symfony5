@@ -132,6 +132,13 @@ class PageController extends AbstractController
      */
     public function someFunction()
     {
-        return $this->render('page/test.html.twig');
+
+        $someArray = [1,2,3];
+        $someValue = false;
+        return $this->render('page/test.html.twig',
+        [
+            'some_array' => $someArray,
+            'some_value' => $someValue
+        ]);
     }
 }

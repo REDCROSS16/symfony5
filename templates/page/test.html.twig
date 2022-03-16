@@ -3,6 +3,13 @@
 
 {% block body%}
     <h4> Hello {{ 'Sanya'  }}</h4>
-{% endblock %}
+    <br>
+    {% if some_value %}
+        {{  'YES!' }}
+    {% endif %}
 
-{% block stylesheets %} {% endblock %}
+    {% for key,some_item in some_array %}
+        'key' {{ key }} 'value' {{ some_item }} <br>
+    {% endfor %}
+
+{% endblock %}
