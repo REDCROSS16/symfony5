@@ -135,6 +135,8 @@ class PageController extends AbstractController
 
         $someArray = [1,2,3];
         $someValue = false;
+        $object = new \stdClass();
+        $object->name = 'sanya';
         return $this->render('page/test.html.twig',
         [
             'some_array' => $someArray,
